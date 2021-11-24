@@ -2,7 +2,7 @@ const { CATEGORY_TABLE, CategorySchema } = require('../models/category.model')
 const { CUSTOMER_TABLE, CustomerSchema } = require('../models/customer.model')
 const {
   ORDER_PRODUCT_TABLE,
-  OrderProductSchema,
+  OrderProductSchema
 } = require('../models/order-product.model')
 const { ORDER_TABLE } = require('../models/order.model')
 const { PRODUCT_TABLE, ProductSchema } = require('../models/product.model')
@@ -22,18 +22,18 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER
       },
       customerId: {
         field: 'customer_id',
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DataTypes.INTEGER,
         references: {
           model: CUSTOMER_TABLE,
-          key: 'id',
+          key: 'id'
         },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onDelete: 'SET NULL'
       },
       sellerId: {
         field: 'seller_id',
@@ -41,17 +41,17 @@ module.exports = {
         type: Sequelize.DataTypes.INTEGER,
         references: {
           model: SELLER_TABLE,
-          key: 'id',
+          key: 'id'
         },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onDelete: 'SET NULL'
       },
       createdAt: {
         allowNull: false,
         field: 'created_at',
         type: Sequelize.DataTypes.DATE,
-        defaultValue: Sequelize.NOW,
-      },
+        defaultValue: Sequelize.NOW
+      }
     })
 
     await queryInterface.createTable(ORDER_PRODUCT_TABLE, OrderProductSchema)
@@ -65,5 +65,5 @@ module.exports = {
     await queryInterface.dropTable(PRODUCT_TABLE)
     await queryInterface.dropTable(SELLER_TABLE)
     await queryInterface.dropTable(USER_TABLE)
-  },
+  }
 }

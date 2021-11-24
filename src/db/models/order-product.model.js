@@ -13,7 +13,7 @@ const OrderProductSchema = {
   },
   amount: {
     allowNull: false,
-    type: DataTypes.INTEGER
+    type: DataTypes.DOUBLE
   },
   orderId: {
     field: 'order_id',

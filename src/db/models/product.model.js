@@ -17,12 +17,12 @@ const ProductSchema = {
   },
   price: {
     allowNull: false,
-    type: DataTypes.INTEGER
+    type: DataTypes.DOUBLE
   },
   sellingPrice: {
     allowNull: false,
     field: 'selling_price',
-    type: DataTypes.INTEGER
+    type: DataTypes.DOUBLE
   },
   stock: {
     allowNull: false,

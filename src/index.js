@@ -11,7 +11,7 @@ const {
 } = require('./middlewares/error.handler')
 
 const app = express()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3005
 
 // Middlewares
 app.use(express.json())

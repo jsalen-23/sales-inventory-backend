@@ -10,22 +10,22 @@ const createSellerSchema = Joi.object({
   name: name.required(),
   lastName: lastName.required(),
   email: email.required(),
-  password: password.required(),
+  password: password.required()
 })
 
 const updateSellerSchema = Joi.object({
   name,
   lastName,
   email,
-  password,
+  password
 })
 
 const getSellerSchema = Joi.object({
-  id: id.required(),
+  id: id.required()
 })
 
 module.exports = {
   createSellerSchema,
   getSellerSchema,
-  updateSellerSchema,
+  updateSellerSchema
 }

@@ -7,35 +7,35 @@ const CategorySchema = {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER
   },
   name: {
     allowNull: false,
     unique: true,
-    type: DataTypes.STRING,
+    type: DataTypes.STRING
   },
   createdAt: {
     allowNull: false,
     field: 'created_at',
     type: DataTypes.DATE,
-    defaultValue: Sequelize.NOW,
-  },
+    defaultValue: Sequelize.NOW
+  }
 }
 
 class Category extends Model {
-  static associate(models) {
+  static associate (models) {
     this.hasMany(models.Product, {
       as: 'products',
-      foreignKey: 'categoryId',
+      foreignKey: 'categoryId'
     })
   }
 
-  static config(sequelize) {
+  static config (sequelize) {
     return {
       sequelize,
       tableName: CATEGORY_TABLE,
       modelName: 'Category',
-      timestamps: false,
+      timestamps: false
     }
   }
 }
@@ -43,5 +43,5 @@ class Category extends Model {
 module.exports = {
   Category,
   CategorySchema,
-  CATEGORY_TABLE,
+  CATEGORY_TABLE
 }

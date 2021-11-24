@@ -6,12 +6,12 @@ const {
   createSeller,
   getSingleSeller,
   updateSeller,
-  deleteSeller,
+  deleteSeller
 } = require('../controllers/seller.controller')
 const {
   createSellerSchema,
   getSellerSchema,
-  updateSellerSchema,
+  updateSellerSchema
 } = require('../schemas/seller.schema')
 
 const router = express.Router()

@@ -6,12 +6,12 @@ const {
   createCustomer,
   getSingleCustomer,
   updateCustomer,
-  deleteCustomer,
+  deleteCustomer
 } = require('../controllers/customer.controller')
 const {
   createCustomerSchema,
   getCustomerSchema,
-  updateCustomerSchema,
+  updateCustomerSchema
 } = require('../schemas/customer.schema')
 
 const router = express.Router()

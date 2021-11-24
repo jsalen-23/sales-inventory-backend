@@ -6,12 +6,12 @@ const {
   createProduct,
   getSingleProduct,
   updateProduct,
-  deleteProduct,
+  deleteProduct
 } = require('../controllers/product.controller')
 const {
   createProductSchema,
   getProductSchema,
-  updateProductSchema,
+  updateProductSchema
 } = require('../schemas/product.schema')
 
 const router = express.Router()

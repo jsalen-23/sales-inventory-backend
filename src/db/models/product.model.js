@@ -8,31 +8,31 @@ const ProductSchema = {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER
   },
   name: {
     allowNull: false,
     unique: true,
-    type: DataTypes.STRING,
+    type: DataTypes.STRING
   },
   price: {
     allowNull: false,
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER
   },
   sellingPrice: {
     allowNull: false,
     field: 'selling_price',
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER
   },
   stock: {
     allowNull: false,
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER
   },
   createdAt: {
     allowNull: false,
     field: 'created_at',
     type: DataTypes.DATE,
-    defaultValue: Sequelize.NOW,
+    defaultValue: Sequelize.NOW
   },
   categoryId: {
     field: 'category_id',
@@ -40,24 +40,24 @@ const ProductSchema = {
     type: DataTypes.INTEGER,
     references: {
       model: CATEGORY_TABLE,
-      key: 'id',
+      key: 'id'
     },
     onUpdate: 'CASCADE',
-    onDelete: 'SET NULL',
-  },
+    onDelete: 'SET NULL'
+  }
 }
 
 class Product extends Model {
-  static associate(models) {
+  static associate (models) {
     this.belongsTo(models.Category, { as: 'category' })
   }
 
-  static config(sequelize) {
+  static config (sequelize) {
     return {
       sequelize,
       tableName: PRODUCT_TABLE,
       modelName: 'Products',
-      timestamps: false,
+      timestamps: false
     }
   }
 }
@@ -65,5 +65,5 @@ class Product extends Model {
 module.exports = {
   Product,
   ProductSchema,
-  PRODUCT_TABLE,
+  PRODUCT_TABLE
 }

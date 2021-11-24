@@ -8,21 +8,21 @@ const phone = Joi.string().integer()
 const createCustomerSchema = Joi.object({
   name: name.required(),
   lastName: lastName.required(),
-  phone: phone.required(),
+  phone: phone.required()
 })
 
 const updateCustomerSchema = Joi.object({
   name,
   lastName,
-  phone,
+  phone
 })
 
 const getCustomerSchema = Joi.object({
-  id: id.required(),
+  id: id.required()
 })
 
 module.exports = {
   createCustomerSchema,
   getCustomerSchema,
-  updateCustomerSchema,
+  updateCustomerSchema
 }

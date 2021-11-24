@@ -3,7 +3,7 @@ const express = require('express')
 const validatorHandler = require('../middlewares/validator.handler')
 const {
   createOrder,
-  getSingleOrder,
+  getSingleOrder
 } = require('../controllers/order.controller')
 const { createOrderSchema, getOrderSchema } = require('../schemas/order.schema')
 

@@ -6,7 +6,7 @@ const customerRouter = require('./customers.router')
 const orderRouter = require('./orders.router')
 const sellerRouter = require('./sellers.route')
 
-function routerAPI(app) {
+function routerAPI (app) {
   const router = express.Router()
   app.use('/api/v1', router)
 

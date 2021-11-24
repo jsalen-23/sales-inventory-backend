@@ -10,6 +10,7 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "lint": "standard",
+    "lint:fix": "standard --fix",
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migrations:run": "sequelize-cli db:migrate --debug",
     "migrations:revert": "sequelize-cli db:migrate:undo",

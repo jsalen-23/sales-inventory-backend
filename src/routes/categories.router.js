@@ -6,25 +6,25 @@ const {
   createCategory,
   getSingleCategory,
   updateCategory,
-  deleteCategory,
+  deleteCategory
 } = require('../controllers/category.controller')
 const {
   createCategorySchema,
   getCategorySchema,
-  updateCategorySchema,
+  updateCategorySchema
 } = require('../schemas/category.schema')
 
 const router = express.Router()
 
 router.get('/', getCategories)
 
-router.post('/', validatorHandler(createCategorySchema, 'body'), createCategory)
-
 router.get(
   '/:id',
   validatorHandler(getCategorySchema, 'params'),
   getSingleCategory
 )
+
+router.post('/', validatorHandler(createCategorySchema, 'body'), createCategory)
 
 router.patch(
   '/:id',

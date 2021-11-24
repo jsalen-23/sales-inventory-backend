@@ -4,19 +4,19 @@ const id = Joi.number().integer()
 const name = Joi.string().min(3)
 
 const createCategorySchema = Joi.object({
-  name: name.required(),
+  name: name.required()
 })
 
 const updateCategorySchema = Joi.object({
-  name,
+  name
 })
 
 const getCategorySchema = Joi.object({
-  id: id.required(),
+  id: id.required()
 })
 
 module.exports = {
   createCategorySchema,
   getCategorySchema,
-  updateCategorySchema,
+  updateCategorySchema
 }

@@ -7,7 +7,7 @@ const {
   logErrors,
   queryErrorHandler,
   boomErrorHandler,
-  errorHandler,
+  errorHandler
 } = require('./middlewares/error.handler')
 
 const app = express()
@@ -25,7 +25,7 @@ const corsOptions = {
     } else {
       callback(new Error('Access Denied.'))
     }
-  },
+  }
 }
 app.use(cors(corsOptions))
 

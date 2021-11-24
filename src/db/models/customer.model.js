@@ -42,6 +42,7 @@ class Customer extends Model {
     return {
       sequelize,
       tableName: CUSTOMER_TABLE,
+      modelName: 'Customer',
       timestamps: false
     }
   }

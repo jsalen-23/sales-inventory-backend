@@ -39,7 +39,8 @@ productController.getSingleProduct = async (req, res, next) => {
 productController.updateProduct = async (req, res, next) => {
   try {
     const { id } = req.params
-    const product = await service.update(id)
+    const body = req.body
+    const product = await service.update(id, body)
 
     return res.status(200).json(product)
   } catch (error) {

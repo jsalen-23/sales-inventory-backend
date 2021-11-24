@@ -1,40 +1,58 @@
+const ProductService = require('../services/product.service')
 const productController = {}
 
-productController.getProducts = (req, res, next) => {
+const service = new ProductService()
+
+productController.getProducts = async (req, res, next) => {
   try {
-    res.json({ message: 'Get Products' })
+    const query = req.query
+    const product = await service.find(query)
+
+    return res.status(200).json(product)
   } catch (error) {
     next(error)
   }
 }
 
-productController.createProduct = (req, res, next) => {
+productController.createProduct = async (req, res, next) => {
   try {
-    res.json({ message: 'Product created' })
+    const data = req.body
+    const newProduct = await service.create(data)
+
+    return res.status(201).json(newProduct)
   } catch (error) {
     next(error)
   }
 }
 
-productController.getSingleProduct = (req, res, next) => {
+productController.getSingleProduct = async (req, res, next) => {
   try {
-    res.json({ message: 'Single Product' })
+    const { id } = req.params
+    const product = await service.findOne(id)
+
+    return res.status(200).json(product)
   } catch (error) {
     next(error)
   }
 }
 
-productController.updateProduct = (req, res, next) => {
+productController.updateProduct = async (req, res, next) => {
   try {
-    res.json({ message: 'Update Product' })
+    const { id } = req.params
+    const product = await service.update(id)
+
+    return res.status(200).json(product)
   } catch (error) {
     next(error)
   }
 }
 
-productController.deleteProduct = (req, res, next) => {
+productController.deleteProduct = async (req, res, next) => {
   try {
-    res.json({ message: 'Delete Product' })
+    const { id } = req.params
+    const product = await service.delete(id)
+
+    return res.status(200).json(product)
   } catch (error) {
     next(error)
   }

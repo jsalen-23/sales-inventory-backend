@@ -13,7 +13,7 @@ const OrderSchema = {
   },
   customerId: {
     field: 'customer_id',
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.INTEGER,
     references: {
       model: CUSTOMER_TABLE,
@@ -61,7 +61,7 @@ class Order extends Model {
     this.belongsTo(models.Seller, {
       as: 'seller'
     })
-    this.hasMany(models.OrderProduct, {
+    this.belongsToMany(models.OrderProduct, {
       as: 'items',
       through: models.OrderProduct,
       foreignKey: 'orderId',

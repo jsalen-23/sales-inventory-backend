@@ -4,7 +4,7 @@ const { models } = require('../libs/sequelize')
 
 class ProductService {
   async create (data) {
-    const newProduct = await models.Products.create(data)
+    const newProduct = await models.Product.create(data)
 
     return newProduct
   }
@@ -27,13 +27,13 @@ class ProductService {
       }
     }
 
-    const products = await models.Products.findAll(options)
+    const products = await models.Product.findAll(options)
 
     return products
   }
 
   async findOne (id) {
-    const product = await models.Products.findByPk(id, {
+    const product = await models.Product.findByPk(id, {
       include: ['category']
     })
 

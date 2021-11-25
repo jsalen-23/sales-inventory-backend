@@ -5,14 +5,14 @@ class OrderService {
   async create (data) {
     // const customer = await models.Customer.findOne({
     //   where: {
-    //     id: data.customerId
-    //   }
+    //     id: data.customerId,
+    //   },
     // })
 
     // const seller = await models.Seller.findOne({
     //   where: {
-    //     id: data.sellerId
-    //   }
+    //     id: data.sellerId,
+    //   },
     // })
 
     const orderData = {

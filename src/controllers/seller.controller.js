@@ -1,40 +1,58 @@
+const SellerService = require('../services/seller.service')
 const sellerController = {}
 
-sellerController.getSellers = (req, res, next) => {
+const service = new SellerService()
+
+sellerController.getSellers = async (req, res, next) => {
   try {
-    res.json({ message: 'Get Sellers' })
+    const sellers = await service.find()
+
+    return res.status(200).json(sellers)
   } catch (error) {
     next(error)
   }
 }
 
-sellerController.createSeller = (req, res, next) => {
+sellerController.createSeller = async (req, res, next) => {
   try {
-    res.json({ message: 'Seller created' })
+    const seller = req.body
+    const newSeller = await service.create(seller)
+
+    return res.status(201).json(newSeller)
   } catch (error) {
     next(error)
   }
 }
 
-sellerController.getSingleSeller = (req, res, next) => {
+sellerController.getSingleSeller = async (req, res, next) => {
   try {
-    res.json({ message: 'Single Seller' })
+    const { id } = req.params
+    const seller = await service.findOne(id)
+
+    return res.status(200).json(seller)
   } catch (error) {
     next(error)
   }
 }
 
-sellerController.updateSeller = (req, res, next) => {
+sellerController.updateSeller = async (req, res, next) => {
   try {
-    res.json({ message: 'Update Seller' })
+    const { id } = req.params
+    const changes = req.body
+    const updatedSeller = await service.update(id, changes)
+
+    return res.status(200).json(updatedSeller)
   } catch (error) {
     next(error)
   }
 }
 
-sellerController.deleteSeller = (req, res, next) => {
+sellerController.deleteSeller = async (req, res, next) => {
   try {
-    res.json({ message: 'Delete Seller' })
+    const { id } = req.params
+    const seller = await service.delete(id)
+
+    return res.status(200).json(seller)
   } catch (error) {
     next(error)
   }

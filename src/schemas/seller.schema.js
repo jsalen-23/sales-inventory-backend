@@ -1,23 +1,22 @@
 const Joi = require('joi')
+const { createUserSchema, updateUserSchema } = require('./user.schema')
 
 const id = Joi.number().integer()
-const name = Joi.string().min(3)
-const lastName = Joi.string().min(3)
-const email = Joi.string().email()
-const password = Joi.string().min(6).max(16)
+const userId = Joi.number().integer()
+const name = Joi.string().min(2)
+const lastName = Joi.string().min(2)
 
 const createSellerSchema = Joi.object({
   name: name.required(),
   lastName: lastName.required(),
-  email: email.required(),
-  password: password.required()
+  userId,
+  user: createUserSchema
 })
 
 const updateSellerSchema = Joi.object({
   name,
   lastName,
-  email,
-  password
+  user: updateUserSchema
 })
 
 const getSellerSchema = Joi.object({

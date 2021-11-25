@@ -8,7 +8,7 @@ const phone = Joi.string()
 const createCustomerSchema = Joi.object({
   name: name.required(),
   lastName: lastName.required(),
-  phone: phone.required()
+  phone
 })
 
 const updateCustomerSchema = Joi.object({

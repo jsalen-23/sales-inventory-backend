@@ -2,7 +2,7 @@ const boom = require('@hapi/boom')
 const { models } = require('../libs/sequelize')
 
 class OrderService {
-  async create (data) {
+  async create(data) {
     // const customer = await models.Customer.findOne({
     //   where: {
     //     id: data.customerId
@@ -17,7 +17,7 @@ class OrderService {
 
     const orderData = {
       customerId: data.customerId,
-      sellerId: data.sellerId
+      sellerId: data.sellerId,
     }
 
     const newOrder = await models.Order.create(orderData)
@@ -25,15 +25,15 @@ class OrderService {
     return newOrder
   }
 
-  async find () {
+  async find() {
     const orders = await models.Order.findAll()
 
     return orders
   }
 
-  async findOne (id) {
+  async findOne(id) {
     const order = await models.Order.findByPk(id, {
-      include: ['seller', 'customer', 'items']
+      include: ['seller', 'customer', 'items'],
     })
 
     if (!order) {
@@ -43,7 +43,7 @@ class OrderService {
     return order
   }
 
-  async update (id, changes) {
+  async update(id, changes) {
     const order = await this.findOne(id)
 
     await order.update(changes)
@@ -51,12 +51,18 @@ class OrderService {
     return { id }
   }
 
-  async delete (id) {
+  async delete(id) {
     const order = await this.findOne(id)
 
     await order.destroy()
 
     return { id }
+  }
+
+  async addItem(item) {
+    const newItem = await models.OrderProduct.create(item)
+
+    return newItem
   }
 }
 

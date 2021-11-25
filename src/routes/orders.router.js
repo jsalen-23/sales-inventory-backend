@@ -5,15 +5,22 @@ const {
   createOrder,
   getSingleOrder,
   updateOrder,
-  deleteOrder
+  deleteOrder,
+  addItem,
 } = require('../controllers/order.controller')
-const { createOrderSchema, getOrderSchema } = require('../schemas/order.schema')
+const {
+  createOrderSchema,
+  getOrderSchema,
+  addItemSchema,
+} = require('../schemas/order.schema')
 
 const router = express.Router()
 
 router.get('/:id', validatorHandler(getOrderSchema, 'params'), getSingleOrder)
 
 router.post('/', validatorHandler(createOrderSchema, 'body'), createOrder)
+
+router.post('/add-item', validatorHandler(addItemSchema, 'body'), addItem)
 
 router.patch('/:id', validatorHandler(getOrderSchema, 'params'), updateOrder)
 

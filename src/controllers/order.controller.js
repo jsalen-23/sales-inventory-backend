@@ -9,7 +9,7 @@ orderController.createOrder = async (req, res, next) => {
     const { seller } = req.body
     const body = {
       customerId: sub,
-      sellerId: seller
+      sellerId: seller,
     }
 
     const newOrder = await service.create(body)
@@ -49,6 +49,17 @@ orderController.deleteOrder = async (req, res, next) => {
     const order = await service.delete(id)
 
     return res.status(200).json(order)
+  } catch (error) {
+    next(error)
+  }
+}
+
+orderController.addItem = async (req, res, next) => {
+  try {
+    const body = req.body
+    const newItem = await service.addItem(body)
+
+    return res.status(201).json(newItem)
   } catch (error) {
     next(error)
   }

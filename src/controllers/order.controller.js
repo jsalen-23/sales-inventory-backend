@@ -5,11 +5,11 @@ const service = new OrderService()
 
 orderController.createOrder = async (req, res, next) => {
   try {
-    const { sub } = req.user
-    const { seller } = req.body
+    // const { sub } = req.user
+    const { sellerId, sub } = req.body
     const body = {
       customerId: sub,
-      sellerId: seller,
+      sellerId: sellerId
     }
 
     const newOrder = await service.create(body)

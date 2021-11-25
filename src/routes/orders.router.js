@@ -6,12 +6,12 @@ const {
   getSingleOrder,
   updateOrder,
   deleteOrder,
-  addItem,
+  addItem
 } = require('../controllers/order.controller')
 const {
   createOrderSchema,
   getOrderSchema,
-  addItemSchema,
+  addItemSchema
 } = require('../schemas/order.schema')
 
 const router = express.Router()

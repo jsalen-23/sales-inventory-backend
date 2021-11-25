@@ -7,21 +7,21 @@ const productId = Joi.number().integer()
 const amount = Joi.number().integer()
 
 const createOrderSchema = Joi.object({
-  sellerId: sellerId.required(),
+  sellerId: sellerId.required()
 })
 
 const getOrderSchema = Joi.object({
-  id: id.required(),
+  id: id.required()
 })
 
 const addItemSchema = Joi.object({
   orderId,
   productId,
-  amount,
+  amount
 })
 
 module.exports = {
   createOrderSchema,
   getOrderSchema,
-  addItemSchema,
+  addItemSchema
 }

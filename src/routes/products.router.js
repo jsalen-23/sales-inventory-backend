@@ -1,6 +1,7 @@
 const express = require('express')
-// const passport = require('passport')
+const passport = require('passport')
 const validatorHandler = require('../middlewares/validator.handler')
+const { checkRole } = require('../middlewares/auth.handler')
 const {
   getProducts,
   createProduct,
@@ -24,10 +25,18 @@ router.get(
   getSingleProduct
 )
 
-router.post('/', validatorHandler(createProductSchema, 'body'), createProduct)
+router.post(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  checkRole(['admin']),
+  validatorHandler(createProductSchema, 'body'),
+  createProduct
+)
 
 router.patch(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkRole(['admin']),
   validatorHandler(getProductSchema, 'params'),
   validatorHandler(updateProductSchema, 'body'),
   updateProduct
@@ -35,6 +44,8 @@ router.patch(
 
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkRole(['admin']),
   validatorHandler(getProductSchema, 'params'),
   deleteProduct
 )

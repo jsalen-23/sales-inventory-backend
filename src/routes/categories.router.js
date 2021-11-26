@@ -1,19 +1,19 @@
 const express = require('express')
 const passport = require('passport')
 const validatorHandler = require('../middlewares/validator.handler')
+const { checkRole } = require('../middlewares/auth.handler')
 const {
   getCategories,
   createCategory,
   getSingleCategory,
   updateCategory,
-  deleteCategory,
+  deleteCategory
 } = require('../controllers/category.controller')
 const {
   createCategorySchema,
   getCategorySchema,
-  updateCategorySchema,
+  updateCategorySchema
 } = require('../schemas/category.schema')
-const { checkRole } = require('../middlewares/auth.handler')
 
 const router = express.Router()
 

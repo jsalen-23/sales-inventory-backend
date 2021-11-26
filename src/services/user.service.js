@@ -2,21 +2,15 @@ const boom = require('@hapi/boom')
 const { models } = require('../libs/sequelize')
 
 class UserService {
-  async create (data) {
-    const newUser = await models.User.create(data)
-
-    return newUser
-  }
-
-  async find () {
+  async find() {
     const users = await models.User.findAll()
 
     return users
   }
 
-  async findOne (id) {
+  async findOne(id) {
     const user = await models.User.findByPk(id, {
-      include: ['sellers']
+      include: ['sellers'],
     })
 
     if (!user) {
@@ -26,7 +20,17 @@ class UserService {
     return user
   }
 
-  async update (id, changes) {
+  async findByEmail(email) {
+    const user = await models.User.findOne({
+      where: {
+        email,
+      },
+    })
+
+    return user
+  }
+
+  async update(id, changes) {
     const user = await this.findOne(id)
 
     await user.update(changes)
@@ -34,7 +38,7 @@ class UserService {
     return { id }
   }
 
-  async delete (id) {
+  async delete(id) {
     const user = await this.findOne(id)
 
     await user.destroy()

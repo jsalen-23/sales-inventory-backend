@@ -13,17 +13,6 @@ userController.getUsers = async (req, res, next) => {
   }
 }
 
-userController.createUser = async (req, res, next) => {
-  try {
-    const user = req.body
-    const newUser = await service.create(user)
-
-    return res.status(201).json(newUser)
-  } catch (error) {
-    next(error)
-  }
-}
-
 userController.getSingleUser = async (req, res, next) => {
   try {
     const { id } = req.params

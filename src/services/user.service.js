@@ -3,14 +3,17 @@ const { models } = require('../libs/sequelize')
 
 class UserService {
   async find() {
-    const users = await models.User.findAll()
+    const users = await models.User.findAll({
+      attributes: ['id', 'email', 'role'],
+    })
 
     return users
   }
 
   async findOne(id) {
     const user = await models.User.findByPk(id, {
-      include: ['sellers'],
+      attributes: ['id', 'email', 'role', 'recoveryToken'],
+      include: ['seller'],
     })
 
     if (!user) {

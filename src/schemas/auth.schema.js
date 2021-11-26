@@ -6,9 +6,9 @@ const token = Joi.string()
 
 const loginSchema = Joi.object({
   email: email.required(),
-  password: password.required(),
+  password: password.required()
 })
 
 module.exports = {
-  loginSchema,
+  loginSchema
 }

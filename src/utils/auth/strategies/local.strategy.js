@@ -5,7 +5,7 @@ const service = new AuthService()
 
 const LocalStrategy = new Strategy(
   {
-    usernameField: 'email',
+    usernameField: 'email'
   },
   async (email, password, done) => {
     try {

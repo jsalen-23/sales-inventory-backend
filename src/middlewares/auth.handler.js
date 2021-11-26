@@ -1,6 +1,6 @@
 const boom = require('@hapi/boom')
 
-function checkRole(roles) {
+function checkRole (roles) {
   return (req, res, next) => {
     const { role } = req.user
 

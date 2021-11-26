@@ -5,7 +5,7 @@ const {
   getUsers,
   getSingleUser,
   updateUser,
-  deleteUser,
+  deleteUser
 } = require('../controllers/user.controller')
 const { getUserSchema, updateUserSchema } = require('../schemas/user.schema')
 

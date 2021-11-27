@@ -13,4 +13,26 @@ authController.signIn = (req, res, next) => {
   }
 }
 
+authController.recoveryPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body
+    const response = await service.sendRecovery(email)
+
+    return res.status(200).json(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
+authController.updatePassword = async (req, res, next) => {
+  try {
+    const { token, password } = req.body
+    const response = await service.updatePassword(token, password)
+
+    return res.status(200).json(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = authController
